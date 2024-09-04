@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://txqsc7lbo5oj"]
+
+[ext_resource type="Texture2D" uid="uid://ifofo3fywgiw" path="res://assets/player_sheet.png" id="1_o8cjy"]
+
+[sub_resource type="Animation" id="Animation_ljqpa"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [7, 10]
+}
+
+[sub_resource type="Animation" id="Animation_q048n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_dx3xw"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [13, 14, 15, 16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_qv4un"]
+resource_name = "hurt"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_uywj0"]
+resource_name = "jump_up"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [11]
+}
+
+[sub_resource type="Animation" id="Animation_fv26a"]
+resource_name = "jump_down"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jr1tm"]
+_data = {
+"RESET": SubResource("Animation_q048n"),
+"hurt": SubResource("Animation_qv4un"),
+"idle": SubResource("Animation_ljqpa"),
+"jump_down": SubResource("Animation_fv26a"),
+"jump_up": SubResource("Animation_uywj0"),
+"run": SubResource("Animation_dx3xw")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 13
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_o8cjy")
+hframes = 19
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jr1tm")
+}
