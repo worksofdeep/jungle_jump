@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://txqsc7lbo5oj"]
+[gd_scene load_steps=10 format=3 uid="uid://txqsc7lbo5oj"]
 
 [ext_resource type="Texture2D" uid="uid://ifofo3fywgiw" path="res://assets/player_sheet.png" id="1_o8cjy"]
 
@@ -114,9 +114,13 @@ _data = {
 "run": SubResource("Animation_dx3xw")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0ru"]
+size = Vector2(11, 22)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 13
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -128,3 +132,10 @@ frame = 7
 libraries = {
 "": SubResource("AnimationLibrary_jr1tm")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_qb0ru")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
