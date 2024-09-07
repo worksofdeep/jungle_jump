@@ -51,7 +51,7 @@ func get_input():
 	
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
-	var jump = Input.is_action_pressed("jump")
+	var jump = Input.is_action_just_pressed("jump")
 	
 	# movement
 	velocity.x = 0

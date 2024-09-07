@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name GenericItem
+
 signal picked_up
 
 var textures = {
